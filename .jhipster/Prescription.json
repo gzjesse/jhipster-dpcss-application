@@ -1,0 +1,48 @@
+{
+  "name": "Prescription",
+  "fields": [
+    {
+      "fieldName": "prescriptionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "healthId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prescribeTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "symptomDesc",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "prescriptionDetail",
+      "otherEntityRelationshipName": "healthId",
+      "relationshipName": "healthId"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customerHealth",
+      "otherEntityRelationshipName": "healthId",
+      "relationshipName": "healthId",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200623085656",
+  "entityTableName": "prescription",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}

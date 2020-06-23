@@ -1,0 +1,64 @@
+{
+  "name": "Customer",
+  "fields": [
+    {
+      "fieldName": "customerId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "peopleId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "loginName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nickName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "relativesRelationship",
+      "otherEntityRelationshipName": "customerId",
+      "relationshipName": "customerId"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "guardianRotation",
+      "otherEntityRelationshipName": "customerId",
+      "relationshipName": "customerId"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "customerHealth",
+      "otherEntityRelationshipName": "customerId",
+      "relationshipName": "customerId"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "people",
+      "otherEntityRelationshipName": "peopleId",
+      "relationshipName": "peopleId",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200623085256",
+  "entityTableName": "customer",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}

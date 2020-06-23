@@ -1,0 +1,58 @@
+{
+  "name": "HealthMonitor",
+  "fields": [
+    {
+      "fieldName": "healthMonitorId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "healthId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "testingEquipment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "equipmentType",
+      "fieldType": "EquipmentType",
+      "fieldValues": "WEAR,MEDICAL,HEALTHY"
+    },
+    {
+      "fieldName": "testingTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "operation",
+      "fieldType": "OperationType",
+      "fieldValues": "SELF,DOCTOR,NURSE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "healthDetail",
+      "otherEntityRelationshipName": "healthId",
+      "relationshipName": "customerId"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customerHealth",
+      "otherEntityRelationshipName": "healthId",
+      "relationshipName": "healthId",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200623085456",
+  "entityTableName": "health_monitor",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}
