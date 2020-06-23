@@ -1,0 +1,56 @@
+{
+  "name": "CustomerHealth",
+  "fields": [
+    {
+      "fieldName": "healthId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "customerId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "healthType",
+      "fieldType": "HealthType",
+      "fieldValues": "CARDIOVASCULAR,NEURO"
+    },
+    {
+      "fieldName": "healthStatus",
+      "fieldType": "ItemStatus",
+      "fieldValues": "NORMAL,HIGH,LOW"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "healthMonitor",
+      "otherEntityRelationshipName": "healthId",
+      "relationshipName": "healthId"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "prescription",
+      "otherEntityRelationshipName": "healthId",
+      "relationshipName": "healthId"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "customerId",
+      "relationshipName": "customerId",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200623085356",
+  "entityTableName": "customer_health",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}
