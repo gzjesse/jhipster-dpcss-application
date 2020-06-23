@@ -1,0 +1,161 @@
+//所有id采用UUID
+//人员信息
+entity People{
+	peopleId String,
+	name String,
+    gender String,
+    idCardNo String,
+    age Integer,
+    dateOfBirth LocalDate,
+    address String,
+    mobile String,
+    tel String ,
+    email String ,
+    status Boolean
+}
+
+//客户信息，继承People
+entity Customer{
+	customerId String,
+    peopleId String,
+    loginName String,
+    nickName String,
+    password String
+}
+//客户健康数据
+//healthStatus 健康状态，通过AI趋势分析得出状态结果
+entity CustomerHealth{
+	healthId String,
+    customerId String,
+    healthType HealthType,
+    healthStatus ItemStatus
+}
+
+//健康检测
+//实时监测，手动检测
+entity HealthMonitor{
+	healthMonitorId String,
+    healthId String,
+    testingEquipment String,
+    equipmentType EquipmentType,
+    testingTime LocalDate,
+    operation OperationType
+    
+}
+//健康详细
+entity HealthDetail{
+	//healthId String,
+    healthMonitorId String,
+    item String,
+    itemValue String,
+    referenceValue String,
+    itemStatus ItemStatus
+    
+}
+//处方单
+entity Prescription{
+	prescriptionId String ,
+	healthId String,
+    prescribeTime LocalDate,
+    symptomDesc String,
+}
+//处方明细
+entity PrescriptionDetail{
+	prescriptionId String,
+    medicineName String,
+    symptomDesc String,
+}
+//亲属关系信息
+entity RelativesRelationship{
+	peopleId String,
+    customerId String
+}
+//循环周期类型
+enum CycleType {
+    WEEKS, MONTHS , YEARS 
+}
+//健康类型：心血管疾病 等
+enum HealthType {
+    CARDIOVASCULAR, NEURO 
+}
+//操作类型：自测（监护人）、医生、护士（社工）
+enum OperationType {
+    SELF , DOCTOR , NURSE 
+}
+//健康指标状态：正常、偏高、偏低
+enum ItemStatus {
+    NORMAL, HIGH , LOW 
+}
+//设备类型：穿戴设备（具有自动检测功能），医疗仪器，
+enum EquipmentType{
+	WEAR , MEDICAL , HEALTHY
+}
+//监护人轮值关系
+entity GuardianRotation{
+	guardianId String,
+    type CycleType,
+    plan String   
+}
+
+
+
+//医生
+//entity Doctor{}
+//护士
+//entity Nurse{}
+//员工信息，继承People
+entity Staff{
+	staffId String,
+    peopleId String,
+    loginName String,
+    password String,
+    occupation Occupation
+}
+//职业
+enum Occupation {
+    DOCTOR, NURSE , SOCIAL_WORKER 
+}
+//技能
+entity JobSkills{
+	staffId String,
+	skillTitle String,
+    healthType HealthType,
+    describe String
+    
+}
+
+//对应关系定义
+relationship OneToOne {
+	People{peopleId} to Customer{peopleId},
+    People{peopleId} to Staff{peopleId}
+}
+
+relationship OneToMany {
+	Customer{customerId} to RelativesRelationship{customerId} ,
+	Customer{customerId} to	GuardianRotation{customerId},
+    Customer{customerId} to	CustomerHealth{customerId},
+    CustomerHealth{healthId} to	HealthMonitor{healthId},
+    HealthMonitor{customerId} to	HealthDetail{healthId},
+    CustomerHealth{healthId} to	Prescription{healthId},
+    Prescription{healthId} to	PrescriptionDetail{healthId},
+    Staff{peopleId} to JobSkills{peopleId}
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+paginate all with pagination
+
+//Use DAta Transfert Objects(DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except all
+
+// Set an angular suffix
+//angularSuffix * with mySuffix
+
+
+
+
+
+
