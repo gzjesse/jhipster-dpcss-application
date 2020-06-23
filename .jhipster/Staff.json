@@ -1,0 +1,53 @@
+{
+  "name": "Staff",
+  "fields": [
+    {
+      "fieldName": "staffId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "peopleId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "loginName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "occupation",
+      "fieldType": "Occupation",
+      "fieldValues": "DOCTOR,NURSE,SOCIAL_WORKER"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "jobSkills",
+      "otherEntityRelationshipName": "peopleId",
+      "relationshipName": "peopleId"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "people",
+      "otherEntityRelationshipName": "peopleId",
+      "relationshipName": "peopleId",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200623090100",
+  "entityTableName": "staff",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}

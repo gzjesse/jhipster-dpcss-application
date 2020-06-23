@@ -1,0 +1,47 @@
+{
+  "name": "HealthDetail",
+  "fields": [
+    {
+      "fieldName": "healthMonitorId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "item",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "itemValue",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "referenceValue",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "itemStatus",
+      "fieldType": "ItemStatus",
+      "fieldValues": "NORMAL,HIGH,LOW"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "healthMonitor",
+      "otherEntityRelationshipName": "customerId",
+      "relationshipName": "healthId",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200623085600",
+  "entityTableName": "health_detail",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}

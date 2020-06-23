@@ -1,0 +1,43 @@
+{
+  "name": "JobSkills",
+  "fields": [
+    {
+      "fieldName": "staffId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "skillTitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "healthType",
+      "fieldType": "HealthType",
+      "fieldValues": "CARDIOVASCULAR,NEURO"
+    },
+    {
+      "fieldName": "describe",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "staff",
+      "otherEntityRelationshipName": "peopleId",
+      "relationshipName": "peopleId",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200623090200",
+  "entityTableName": "job_skills",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}

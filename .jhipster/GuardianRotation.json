@@ -1,0 +1,39 @@
+{
+  "name": "GuardianRotation",
+  "fields": [
+    {
+      "fieldName": "guardianId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "CycleType",
+      "fieldValues": "WEEKS,MONTHS,YEARS"
+    },
+    {
+      "fieldName": "plan",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "customerId",
+      "relationshipName": "customerId",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200623090000",
+  "entityTableName": "guardian_rotation",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dpcss",
+  "applications": "*",
+  "microserviceName": "dpcss"
+}
